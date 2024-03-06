@@ -49,12 +49,15 @@ export const NavBar = () => {
       </form>
       <div className={cl.navBarFilters}>
         {filterFields.map((field, i) => (
-          <div key={i} className={cl.filterContainer}>
-            <Button icon onClick={() => updateFilter(field)}>
-              {filters.includes(field) ? <FaRegCheckCircle /> : <FaRegCircle />}
-            </Button>
+          <Button
+            onClick={() => updateFilter(field)}
+            icon
+            key={i}
+            className={cl.filterContainer}
+          >
+            {filters.includes(field) ? <FaRegCheckCircle /> : <FaRegCircle />}
             <span>{field}</span>
-          </div>
+          </Button>
         ))}
       </div>
     </div>

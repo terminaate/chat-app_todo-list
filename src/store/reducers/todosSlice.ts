@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TodoType } from '@/types/TodoType.ts';
 import { generateId } from '@/utis/generateId.ts';
-import { EditTodo } from '@/types/EditTodo.ts';
+import { EditTodoType } from '@/types/EditTodoType.ts';
 
 export type TodosState = {
   todos: TodoType[];
@@ -51,7 +51,7 @@ export const todosSlice = createSlice({
       state.todos.splice(candidate, 1);
     },
 
-    editTodo(state, action: PayloadAction<EditTodo>) {
+    editTodo(state, action: PayloadAction<EditTodoType>) {
       const candidate = state.todos.findIndex(
         (o) => o.id === action.payload.id,
       );
