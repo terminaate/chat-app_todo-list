@@ -4,7 +4,11 @@ import { generateId } from '@/utis/generateId.ts';
 
 export type TodosState = TodoType[];
 
-export const initialState: TodosState = [];
+const storageTodos = JSON.parse(localStorage.getItem('todos') ?? '{}');
+
+export const initialState: TodosState = localStorage.getItem('todos')
+  ? storageTodos
+  : [];
 
 export const todosSlice = createSlice({
   name: 'todos',
