@@ -1,5 +1,26 @@
-.navBarContainer {
+.navBar {
   display: flex;
-  align-items: center;
-  column-gap: 10px;
+  flex-direction: column;
+  row-gap: 5px;
+
+  .navBarContainer {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  .navBarFilters {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filterContainer {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+    font-family: var(--font-primary);
+    font-size: 15px;
+  }
 }

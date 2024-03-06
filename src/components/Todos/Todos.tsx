@@ -4,6 +4,7 @@ import { FC } from 'react';
 import { TodoType } from '@/types/TodoType.ts';
 import { FaRegCheckCircle, FaRegCircle, FaRegTrashAlt } from 'react-icons/fa';
 import { deleteTodo, toggleCompleteTodo } from '@/store/reducers/todosSlice.ts';
+import { Button } from '@/components/UI/Button';
 
 const Todo: FC<TodoType> = ({ content, isCompleted, id }) => {
   const dispatch = useAppDispatch();
@@ -22,23 +23,35 @@ const Todo: FC<TodoType> = ({ content, isCompleted, id }) => {
         {content}
       </h4>
       <div className={cl.todoActionsContainer}>
-        <button onClick={onDeleteButtonClick} className={cl.todoIconButton}>
+        <Button icon onClick={onDeleteButtonClick}>
           <FaRegTrashAlt />
-        </button>
-        <button onClick={onCompleteButtonClick} className={cl.todoIconButton}>
+        </Button>
+        <Button icon onClick={onCompleteButtonClick}>
           {isCompleted ? <FaRegCheckCircle /> : <FaRegCircle />}
-        </button>
+        </Button>
       </div>
     </div>
   );
 };
 
 export const Todos = () => {
-  const todos = useAppSelector((state) => state.todosSliceReducer);
+  const { todos, filters: filtersFields } = useAppSelector(
+    (state) => state.todosSliceReducer,
+  );
+
+  const filteredTodos = todos.filter((todo) => {
+    for (const field of filtersFields) {
+      if (!todo[field]) {
+        return false;
+      }
+    }
+
+    return true;
+  });
 
   return (
     <div className={cl.todosContainer}>
-      {todos.map((o) => (
+      {filteredTodos.map((o) => (
         <Todo key={o.id} {...o} />
       ))}
     </div>
