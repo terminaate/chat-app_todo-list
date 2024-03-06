@@ -1,0 +1,28 @@
+*, *:after, *:before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-primary: #111;
+  --background-secondary: #222;
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.5);
+  --font-primary: sans-serif;
+  --font-secondary: monospace;
+}
+
+#root {
+  width: 50%;
+  margin-block: 50px;
+}
+
+body {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
